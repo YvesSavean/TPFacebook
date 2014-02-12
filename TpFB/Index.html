@@ -1,0 +1,74 @@
+<!<!DOCTYPE html>
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<head>
+		<title>Facebook Friends</title>
+		<link rel="stylesheet" href="Boostrap/css/bootstrap.css"/>
+		<link rel="stylesheet" href="Boostrap/css/bootstrap-theme.css"/>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h3 class="text-muted">Facebook Friends</h3>
+    <div class="pull-right">
+	<div class="input-group">
+		<input type='text' id='search' class="form-control" />
+		<input type='button' id='trier' value='amis en commun' class="form-control"/>
+		<input type='button' id='like' value='like' class="form-control"/>
+	</div>
+  </div>
+  <div class="row">
+		<div class="col-sm-6 col-md-4">
+			<div class="thumbnail">
+				<div class="caption">
+					<div class="panel panel-default">
+						<div class="panel-heading" style="text-align: center">Stat like
+						</div>
+						<div id="like">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>				
+  <div class="row" id="trombinoscope">
+    <div class="col-lg-6">
+    </div>
+  </div>
+</div>
+
+<script type="text/htm" id="tmpl_friend">
+<div class="col-md-4" style="text-align:center;margin-bottom:1em;">
+	<div class="panel panel-info">
+		<img src="<%= pic %>" class="img-thumbnail" style="height:100px;">
+	<div><%= first_name %> <%= last_name %>(<%= AmiCom %>)[<%= Like %>]</div>
+	</div>
+</div>
+</script>
+
+<script type="text/javascript" src="./js/jquery-2.1.0.js"></script>
+<script type="text/javascript" src="./js/lodash.underscore.js"/></script>
+<script type="text/javascript" src="./js/backbone.js"/></script>
+<script type="text/javascript" src="./Boostrap/js/bootstrap.js"/></script>
+<script type="text/javascript" src="./app/FB.js"/></script>
+<script type="text/javascript" src="./app/models/FriendModel.js"/></script>
+<script type="text/javascript" src="./app/Collections/FriendCollection.js"/></script>
+<script type="text/javascript" src="./app/Views/FriendView.js"/></script>
+<script type="text/javascript" src="./app/Views/AppView.js"/></script>
+
+
+<script type="text/javascript">
+var collection = new FriendCollection();
+
+var app = new AppView({
+  el:$('.container')[0],
+  collection:collection
+});
+
+collection.reset(friends);
+</script>
+
+
+
+</body>
+</html>
